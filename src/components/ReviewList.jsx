@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Button from "./Button.jsx";
+import { BASE_URL } from "../Config.js";
 
 const ReviewList = () => {
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ const ReviewList = () => {
         const fetchTrips = async () => {
             try {
                 // Adjusted API endpoint URL
-                const response = await axios.get(`http://localhost:5000/api/trips/${userRole}/pending`, {
+                const response = await axios.get(`${BASE_URL}/api/trips/${userRole}/pending`, {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`, // Include token in headers
                     },
