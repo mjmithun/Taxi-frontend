@@ -98,7 +98,7 @@ const ReviewTripForm = ({ className = "", tripId }) => {
         const gstPercentage = formData.gstPercentage;
         try {
             const response = await axios.post(
-                `http://localhost:5000/api/trips/${userRole}/${tripDetails._id}/finalize-trip`,
+                `${BASE_URL}/api/trips/${userRole}/${tripDetails._id}/finalize-trip`,
                 {
                     ...formData,
                     balance,
