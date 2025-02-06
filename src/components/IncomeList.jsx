@@ -128,10 +128,12 @@ const IncomeList = () => {
             const email = trip.customer?.email?.toLowerCase() || "";
             const contactNumber = String(trip.customer?.contactNumber || "");
             const drivername = trip.driver?.name?.toLowerCase() || "";
+            const invoice = trip.invoiceNumber ? trip.invoiceNumber.toLowerCase() : "";
             const searchTerm = searchQuery.toLowerCase();
 
             const matchesSearch =
                 customerName.includes(searchTerm) ||
+                invoice.includes(searchTerm)||
                 email.includes(searchTerm) ||
                 drivername.includes(searchTerm) ||
                 contactNumber.includes(searchTerm);
