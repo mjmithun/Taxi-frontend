@@ -25,6 +25,7 @@ import EndTrip from './EndTrip.jsx';
 import Review from './Review.jsx';
 import ReviewTripForm from './components/ReviewTripForm.jsx';
 import ReviewTrip from './ReviewForm.jsx';
+import Accounts from './Accounts.jsx';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -61,6 +62,7 @@ root.render(
         
         {/* Driver Route */}
         <Route path="/trips" element={<ProtectedRoute element={<Trips />} allowedRoles={['driver', 'admin']} />} />
+        <Route path="/accounts" element={<ProtectedRoute element={<Accounts />} allowedRoles={['driver', 'admin']} />} />
       </Routes>
     </Router>
   </React.StrictMode>

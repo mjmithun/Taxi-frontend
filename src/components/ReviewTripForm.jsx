@@ -60,9 +60,11 @@ const ReviewTripForm = ({ className = "", tripId }) => {
         }
     };
 
+
+
     const calculateBalance = () => {
         if (!tripDetails) return 0;
-    
+
         const farePrice = tripDetails.fare || 0;
         const advanceAmount = tripDetails.advance || 0;
         const endKm = tripDetails.endKm || 0;
@@ -70,7 +72,7 @@ const ReviewTripForm = ({ className = "", tripId }) => {
         const discount = parseFloat(formData.discount) || 0;
         const tripExpense = parseFloat(formData.tripExpense) || 0;
         let balance = 0;
-    
+
         if (tripDetails.fareType === "day") {
             const daysDifference = Math.ceil(
                 (new Date() - new Date(tripDetails.startDate)) / (1000 * 60 * 60 * 24)
@@ -79,10 +81,10 @@ const ReviewTripForm = ({ className = "", tripId }) => {
         } else if (tripDetails.fareType === "km") {
             balance = farePrice * (endKm - startKm) - advanceAmount - discount + tripExpense;
         }
-    
+
         return balance || 0; // Ensure balance is always a number
     };
-    
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -105,7 +107,8 @@ const ReviewTripForm = ({ className = "", tripId }) => {
                     tripExpense,
                     gstPercentage,
                     gstAmount
-,                },
+                    ,
+                },
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -122,9 +125,9 @@ const ReviewTripForm = ({ className = "", tripId }) => {
     };
 
     let TotalBalanceAmount = 0;
-    if (formData.gstChecked){
+    if (formData.gstChecked) {
         TotalBalanceAmount = (Number(calculateBalance()) || 0) + parseFloat(formData.gstAmount || 0);
-    }else{
+    } else {
         TotalBalanceAmount = (Number(calculateBalance()) || 0)
     }
 
@@ -235,40 +238,40 @@ const ReviewTripForm = ({ className = "", tripId }) => {
 
                                         {/* Payment Type Section */}
                                         <div className="flex flex-col md:flex-row gap-4">
-                                        <div className="flex flex-col gap-4 flex-1">
-                                            <label className="font-medium text-sm">Payment Type</label>
-                                            <div className="rounded-2xl flex items-center border-[1px] border-solid border-black p-4">
-                                                <select
-                                                    name="paymentType"
-                                                    value={formData.paymentType}
-                                                    onChange={handleChange}
-                                                    className="w-full bg-transparent border-none outline-none text-black text-left"
-                                                >
-                                                    <option value="">Select Payment Type</option>
-                                                    <option value="Cash">Cash</option>
-                                                    <option value="Card">Card</option>
-                                                    <option value="Cheque">Cheque</option>
-                                                    <option value="UPI">UPI</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        {/* Conditional Card/Cheque Number */}
-                                        {(formData.paymentType === "Card" || formData.paymentType === "Cheque") && (
                                             <div className="flex flex-col gap-4 flex-1">
-                                                <label className="font-medium text-sm">{formData.paymentType === "Card" ? "Card Number" : "Cheque Number"}</label>
+                                                <label className="font-medium text-sm">Payment Type</label>
                                                 <div className="rounded-2xl flex items-center border-[1px] border-solid border-black p-4">
-                                                    <input
-                                                        name="paymentDetail"
-                                                        value={formData.paymentDetail}
+                                                    <select
+                                                        name="paymentType"
+                                                        value={formData.paymentType}
                                                         onChange={handleChange}
                                                         className="w-full bg-transparent border-none outline-none text-black text-left"
-                                                        placeholder={`${formData.paymentType === "card" ? "Enter Card Number" : "Enter Cheque Number"}`}
-                                                        type="text"
-                                                    />
+                                                    >
+                                                        <option value="">Select Payment Type</option>
+                                                        <option value="Cash">Cash</option>
+                                                        <option value="Card">Card</option>
+                                                        <option value="Cheque">Cheque</option>
+                                                        <option value="UPI">UPI</option>
+                                                    </select>
                                                 </div>
                                             </div>
-                                        )}
+
+                                            {/* Conditional Card/Cheque Number */}
+                                            {(formData.paymentType === "Card" || formData.paymentType === "Cheque") && (
+                                                <div className="flex flex-col gap-4 flex-1">
+                                                    <label className="font-medium text-sm">{formData.paymentType === "Card" ? "Card Number" : "Cheque Number"}</label>
+                                                    <div className="rounded-2xl flex items-center border-[1px] border-solid border-black p-4">
+                                                        <input
+                                                            name="paymentDetail"
+                                                            value={formData.paymentDetail}
+                                                            onChange={handleChange}
+                                                            className="w-full bg-transparent border-none outline-none text-black text-left"
+                                                            placeholder={`${formData.paymentType === "card" ? "Enter Card Number" : "Enter Cheque Number"}`}
+                                                            type="text"
+                                                        />
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
                                 </>
@@ -335,7 +338,7 @@ const ReviewTripForm = ({ className = "", tripId }) => {
                                     <span>Discount Amount:</span>
                                     <span>{parseFloat(formData.discount).toFixed(2) || 0}</span> {/* Placeholder for Trip Discount */}
                                 </div>
-                                
+
                                 {/* Payment Details */}
                                 <h3 className="text-lg font-semibold mb-4">Payment Details</h3>
                                 <div className="flex justify-between mb-2">
