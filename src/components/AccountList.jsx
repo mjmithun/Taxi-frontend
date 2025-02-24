@@ -11,8 +11,9 @@ const AccountList = () => {
     };
 
     const handleRowClick = (year, month) => {
-        navigate(`/account-form?year=${year}&month=${month}`);
+        navigate(`/accountdetails/${year}/${month}`);  // ✅ Use route parameters
     };
+
 
     const [financialData, setFinancialData] = useState([]);
 
