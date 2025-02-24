@@ -116,7 +116,7 @@ const AccountForm = () => {
     };
 
     return (
-        <div className="w-full right-0 bottom-0 left-0 px-4 py-4 md:px-16 lg:px-32 h-lvh text-left text-sm text-black z-0">
+        <div className="w-full right-0 bottom-0 left-0 px-4 py-4 md:px-16 lg:px-32 h-full text-left text-sm text-black z-0">
             <form onSubmit={handleSubmit}>
                 <div className="flex flex-col items-center">
                     <div className="relative flex items-center justify-center h-full w-full max-w-2xl mx-5 mt-8">
