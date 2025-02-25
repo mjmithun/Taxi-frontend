@@ -29,7 +29,7 @@ const AccountList = () => {
             for (let year = startYear; year <= currentYear; year++) {
                 for (let month = (year === startYear ? startMonth : 1); month < (year === currentYear ? currentMonth : 13); month++) {
                     try {
-                        const response = await axios.get(`http://localhost:8080/api/finance/admin/company-finance/${year}/${month}`, {
+                        const response = await axios.get(`${BASE_URL}/api/finance/admin/company-finance/${year}/${month}`, {
                             headers: {
                                 'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include token in headers
                             },

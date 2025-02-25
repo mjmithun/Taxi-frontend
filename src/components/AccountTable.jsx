@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-
+import { BASE_URL } from "../Config";
 const AccountForm = () => {
     const [formData, setFormData] = useState({
         cashComingIn: '',
@@ -31,7 +31,7 @@ const AccountForm = () => {
 
     const fetchPrevBalance = async (year, month) => {
         try {
-            const response = await axios.get(`http://localhost:8080/api/finance/admin/company-finance/prev-balance/${year}/${month}`, {
+            const response = await axios.get(`${BASE_URL}/api/finance/admin/company-finance/prev-balance/${year}/${month}`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include token in headers
                 },
@@ -45,7 +45,7 @@ const AccountForm = () => {
 
     const fetchTripExpense = async (year, month) => {
         try {
-            const response = await axios.get(`http://localhost:8080/api/incomes/admin/monthly-income/${year}/${month}`, {
+            const response = await axios.get(`${BASE_URL}/api/incomes/admin/monthly-income/${year}/${month}`, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include token in headers
                 },
@@ -104,7 +104,7 @@ const AccountForm = () => {
                 }
             };
 
-            await axios.post(`http://localhost:8080/api/finance/admin/company-finance/${year}/${month}`, payload, {
+            await axios.post(`${BASE_URL}/api/finance/admin/company-finance/${year}/${month}`, payload, {
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`, // Include token in headers
                 },
