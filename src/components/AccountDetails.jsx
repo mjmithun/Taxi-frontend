@@ -13,7 +13,7 @@ const AccountDetails = () => {
         const fetchAccountDetails = async () => {
             try {
                 const response = await axios.get(
-                    `${BASE_URL}/api/finance/admin/company-finance/${year}/${month}`,
+                    `${BASE_URL}/api/finance/admin/company-finance/${year}/${month}/`,
                     {
                         headers: {
                             'Authorization': `Bearer ${localStorage.getItem('token')}`,

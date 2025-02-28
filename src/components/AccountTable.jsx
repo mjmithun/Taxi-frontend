@@ -160,12 +160,15 @@ const AccountForm = () => {
                                     <div className="rounded-lg flex items-center border border-black p-3">{totalCashIn}</div>
                                 </div>
                             </div>
-
+                            
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="col-span-2">
+                                    <p className="text-[20px] font-semibold ">Add Expenses Below</p>
+                                </div>
                                 {Object.keys(formData).map((field, index) => (
                                     field !== "cashComingIn" && (
                                         <div key={index} className="flex flex-col gap-3">
-                                            <label className="font-medium text-sm">{field.replace(/([A-Z])/g, " $1").trim()}</label>
+                                            <label className="font-medium text-sm capitalize">{field.replace(/([A-Z])/g, " $1").trim()}</label>
                                             <input
                                                 name={field}
                                                 value={formData[field]}

@@ -25,7 +25,7 @@ const AccountList = () => {
             const currentYear = currentDate.getFullYear();
             const currentMonth = currentDate.getMonth() + 1; // JavaScript months are 0-based
             const dataArray = [];
-
+            console.log(localStorage.getItem('token'));
             for (let year = startYear; year <= currentYear; year++) {
                 for (let month = (year === startYear ? startMonth : 1); month < (year === currentYear ? currentMonth : 13); month++) {
                     try {
@@ -59,7 +59,7 @@ const AccountList = () => {
     }, []);
 
     return (
-        <div>
+        <div className="mt-4">
             <div className="self-stretch shadow-[0px_4px_4px_rgba(0,_0,_0,_0.25)] border-[1px] border-solid border-gray-100 bg-component flex flex-row items-start justify-evenly pt-[31px] pb-[33px] pr-[65px] pl-[52px] box-border max-w-full gap-[20px] rounded-3xl min-w-min h-[560px] mq750:gap[3px] mq750:justify-center mq750:box-border mq750:px-9 mq750:ml-9 mq750:mt-10">
                 <form className="m-0 self-stretch h-[615.3px] flex flex-col items-start justify-start pt-0 px-0 gap-[9.5px] max-w-full mq450:box-border">
                     <div className="flex justify-between min-w-full mq750:gap-[20px]">
